@@ -1,0 +1,25 @@
+{
+  "author": "Dan Egnor <egnor@ofb.net>",
+  "bugs": {
+    "url": "https://github.com/egnor/esbuild-plugin-clean-outdir/issues"
+  },
+  "description": "Plugin for esbuild (esbuild.github.io) to erase the output directory before building (and add a .gitignore)",
+  "homepage": "https://github.com/egnor/esbuild-plugin-clean-outdir#readme",
+  "license": "MIT",
+  "keywords": [
+    "esbuild",
+    "plugin",
+    "js"
+  ],
+  "main": "index.js",
+  "name": "esbuild-plugin-clean-outdir",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egnor/esbuild-plugin-clean-outdir.git"
+  },
+  "type": "module",
+  "version": "1.0.0",
+  "dependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
