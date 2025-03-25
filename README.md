@@ -6,11 +6,17 @@ This is a plugin for [esbuild](esbuild.github.io) to erase the output directory 
 
 Otherwise, artifacts of previous build runs can clutter things up and even get pushed to production.
 
-Of course you could do this yourself with something like `rmSync( "my_outdir", { recursive: true, force: true })`, but this plugin has minor advantages:
-- it removes contents but leaves the directory itself, to avoid stranding shells or other processes
+You could manage this yourself with `rmSync( "my_outdir", { recursive: true, force: true })`, but this plugin has minor advantages
+- it removes contents but leaves the bare directory, to avoid stranding shells and such.
 - it adds a `.gitignore` so nothing in the directory is checked in (if you're using git)
+- it runs at plugin creation time, not `onStart` time, to avoid clobbering any `onStart` output
 
-That said, there's nothing magical here.
+That said, there's nothing magical here, and you might prefer one of the following
+- [@akrc/esbuild-plugin-clean](https://github.com/AkaraChen/esbuild-plugin-clean#readme)
+- [esbuild-clean-plugin](https://github.com/jwilsson/esbuild-clean-plugin#readme)
+- [esbuild-plugin-clean](https://github.com/LinbuduLab/esbuild-plugins/tree/main/packages/esbuild-plugin-clean#readme)
+- [esbuild-plugin-clear](https://github.com/DasRed/esbuild-plugin-clear#readme)
+- [esbuild-plugin-output-reset](https://github.com/yamitsushi/esbuild-plugin-output-reset#readme)
 
 ## Usage
 
