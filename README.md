@@ -16,20 +16,20 @@ That said, there's nothing magical here.
 
 Install the plugin:
 ```
-npm i esbuild-plugin-clean-output
+npm i esbuild-plugin-clean-outdir
 ```
 
 When you invoke `esbuild.build(...)` in your build script, pass the plugin:
 ```
 import * as esbuild from "esbuild";
-import esbuildCleanOutput from "esbuild-plugin-clean-output";
+import esbuildCleanOutdir from "esbuild-plugin-clean-outdir";
 ...
 await esbuild.build({
   bundle: true,
   outdir: "...",
   ... other esbuild options ...
   plugins: [
-    esbuildCleanOutput(),
+    esbuildCleanOutdir(),
     ...
   ],
 });
