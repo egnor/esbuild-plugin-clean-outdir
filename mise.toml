@@ -1,5 +1,5 @@
 [tools]
-node = "22"
+bun = "1.2.12"
 
 [tasks.setup]
 run = ["mise install", "npm install"]
