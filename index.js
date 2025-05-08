@@ -4,9 +4,8 @@ export default function esbuildCleanOutdir() {
   const name = "clean-outdir";
   return {
     name, setup(build) {
-      const plugin = `esbuild-plugin-${name}`;
       const { outdir } = build.initialOptions;
-      if (!outdir) throw new Error(`${plugin} requires 'outdir'`);
+      if (!outdir) return;
 
       // Remove contents but not the directory to minimize stranding
       fs.mkdirSync(outdir, { recursive: true });
@@ -14,6 +13,7 @@ export default function esbuildCleanOutdir() {
         fs.rmSync(`${outdir}/${f}`, { recursive: true, force: true });
       }
 
+      const plugin = `esbuild-plugin-${name}`;
       fs.writeFileSync(`${outdir}/.gitignore`, `# written by ${plugin}\n*\n`);
     }
   };
