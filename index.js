@@ -10,11 +10,14 @@ export default function esbuildCleanOutdir() {
       // Remove contents but not the directory to minimize stranding
       fs.mkdirSync(outdir, { recursive: true });
       for (const f of fs.readdirSync(outdir)) {
-        fs.rmSync(`${outdir}/${f}`, { recursive: true, force: true });
+        if (f !== ".gitignore") {
+          fs.rmSync(`${outdir}/${f}`, { recursive: true, force: true });
+        }
       }
 
       const plugin = `esbuild-plugin-${name}`;
-      fs.writeFileSync(`${outdir}/.gitignore`, `# written by ${plugin}\n*\n`);
+      fs.writeFileSync(`${outdir}/.gitignore.tmp`, `# by ${plugin}\n*\n`);
+      fs.renameSync(`${outdir}/.gitignore.tmp`, `${outdir}/.gitignore`);
     }
   };
 };
